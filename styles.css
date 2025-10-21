@@ -741,3 +741,414 @@ html {
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
 }
+
+/* Image Search & Customization Styles */
+.edit-mode-toggle {
+    position: fixed;
+    top: 100px;
+    right: 2rem;
+    background: var(--white);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.edit-mode-toggle:hover {
+    background: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.edit-mode-toggle.active {
+    background: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+}
+
+.edit-icon {
+    font-size: 1.2rem;
+}
+
+.carousel-edit-btn {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    z-index: 15;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.carousel-edit-btn:hover {
+    background: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+}
+
+/* Image Search Modal */
+.image-search-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: var(--white);
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--secondary);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.search-mode-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.search-mode-tab {
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-mode-tab:hover {
+    color: var(--text-dark);
+}
+
+.search-mode-tab.active {
+    color: var(--secondary);
+    border-bottom-color: var(--secondary);
+}
+
+.search-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--border);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+.search-bar button {
+    padding: 0.8rem 2rem;
+    background: var(--secondary);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background: var(--accent);
+}
+
+.search-info {
+    background: var(--bg-light);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--secondary);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.search-info p {
+    margin: 0.3rem 0;
+}
+
+.search-info a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.search-info a:hover {
+    text-decoration: underline;
+}
+
+.api-notice {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    min-height: 200px;
+}
+
+.search-placeholder, .no-results, .error {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+.search-result-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.search-result-item:hover {
+    border-color: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.search-result-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-result-item:hover .image-overlay {
+    opacity: 1;
+}
+
+.select-image-btn {
+    padding: 0.7rem 1.5rem;
+    background: var(--white);
+    color: var(--text-dark);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.select-image-btn:hover {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.selected-images {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+.selected-images h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.selected-images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.selected-image-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    border: 2px solid var(--secondary);
+}
+
+.selected-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background: var(--secondary);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.remove-image-btn:hover {
+    background: var(--text-dark);
+}
+
+.modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btn-secondary, .btn-primary {
+    padding: 0.8rem 2rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-secondary {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--border);
+}
+
+.btn-primary {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--secondary);
+    color: var(--white);
+    padding: 1rem 2rem;
+    z-index: 10001;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .edit-mode-toggle {
+        right: 1rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .edit-text {
+        display: none;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    .modal-header, .modal-body, .modal-footer {
+        padding: 1.5rem;
+    }
+
+    .search-results {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .selected-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

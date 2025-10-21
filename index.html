@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Edit Mode Toggle -->
+    <button id="editModeToggle" class="edit-mode-toggle" title="Customize Images">
+        <span class="edit-icon">✎</span>
+        <span class="edit-text">Customize Images</span>
+    </button>
     <header class="hero">
         <div class="hero-overlay">
             <h1>French Polynesia Christmas Adventure</h1>
@@ -64,7 +69,7 @@
 
             <div class="accommodation-card">
                 <h3>🏨 Accommodation: Hilton Tahiti (1 night)</h3>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="hilton-tahiti">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=80" alt="Tahiti Resort Pool">
@@ -79,6 +84,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <p class="hotel-description">Five minutes from Faa'a International Airport, featuring a large outdoor pool overlooking Moorea Island with six private cabanas and three restaurants.</p>
             </div>
@@ -96,7 +102,7 @@
 
                 <div class="activity-option recommended">
                     <h4>Option 1: Fautaua Waterfall Trail (RECOMMENDED)</h4>
-                    <div class="carousel-container">
+                    <div class="carousel-container" data-location="fautaua-waterfall">
                         <div class="carousel">
                             <div class="carousel-slide active">
                                 <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&q=80" alt="Tropical Waterfall">
@@ -111,6 +117,7 @@
                         <button class="carousel-btn prev">‹</button>
                         <button class="carousel-btn next">›</button>
                         <div class="carousel-dots"></div>
+                        <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                     </div>
                     <ul>
                         <li><strong>Early start essential</strong> - need to finish by noon</li>
@@ -149,7 +156,7 @@
 
             <div class="accommodation-card">
                 <h3>🏝️ Accommodation: Rangiroa (3 nights)</h3>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="rangiroa-accommodation">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1589881133595-c7adf7f5d024?w=1200&q=80" alt="Rangiroa Beach">
@@ -164,6 +171,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <p class="hotel-description">The second largest atoll in the world with stunning turquoise lagoons, perfect for snorkeling and diving. Evening: Settle in, sunset at Tiputa Pass dolphin viewpoint, dinner at your pension.</p>
             </div>
@@ -179,7 +187,7 @@
             <div class="activity-card highlight">
                 <h3>🚤 Blue Lagoon Excursion (MUST DO!)</h3>
                 <p class="important-note">⚠️ Book this immediately upon arrival as trips can be cancelled due to weather</p>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="blue-lagoon">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80" alt="Crystal Blue Lagoon">
@@ -194,6 +202,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <ul>
                     <li>Full-day boat tour to the Blue Lagoon (1 hour each way by speedboat)</li>
@@ -213,7 +222,7 @@
 
             <div class="activity-card">
                 <h3>🤿 Morning: Diving or Snorkeling</h3>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="tiputa-pass">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=1200&q=80" alt="Dolphins Underwater">
@@ -228,6 +237,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <ul>
                     <li><strong>Tiputa Pass:</strong> World-renowned drift dive/snorkel (see dolphins, sharks, manta rays)</li>
@@ -276,7 +286,7 @@
 
             <div class="accommodation-card highlight">
                 <h3>⛵ Board Aldebaran - 13m Trimaran</h3>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="trimaran-sailing">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1200&q=80" alt="Trimaran Sailing">
@@ -291,6 +301,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <p><strong>Captain Marie</strong> (Kite & Wing Spirit)</p>
                 <ul>
@@ -312,7 +323,7 @@
 
             <div class="activity-card">
                 <h3>🪁 Kiteboarding in Paradise</h3>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="kiteboarding">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1502933691298-84fc14542831?w=1200&q=80" alt="Kitesurfing Action">
@@ -327,6 +338,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <p>Experience world-class kiteboarding in the crystal-clear lagoons of French Polynesia with expert instruction from Captain Marie!</p>
             </div>
@@ -339,7 +351,7 @@
             <div class="activity-card highlight">
                 <h3>⛰️ Mount Otemanu Climb (MAJOR ACTIVITY)</h3>
                 <p class="important-note">⚠️ Book guide in advance through Marie or your hotel</p>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="mount-otemanu">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80" alt="Bora Bora Mountain Landscape">
@@ -354,6 +366,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <ul>
                     <li>Bora Bora's tallest peak (727m / 2,385 feet)</li>
@@ -396,7 +409,7 @@
 
             <div class="activity-card highlight">
                 <h3>🗿 Marae Taputapuatea (UNESCO World Heritage Site)</h3>
-                <div class="carousel-container">
+                <div class="carousel-container" data-location="marae-taputapuatea">
                     <div class="carousel">
                         <div class="carousel-slide active">
                             <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=1200&q=80" alt="Ancient Stone Temple">
@@ -411,6 +424,7 @@
                     <button class="carousel-btn prev">‹</button>
                     <button class="carousel-btn next">›</button>
                     <div class="carousel-dots"></div>
+                    <button class="carousel-edit-btn" style="display: none;">🔍 Search Images</button>
                 </div>
                 <ul>
                     <li>Most sacred site in Polynesian Triangle</li>
@@ -524,5 +538,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="image-search.js"></script>
 </body>
 </html>
