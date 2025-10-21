@@ -165,6 +165,11 @@ class ImageSearchManager {
             document.getElementById('webSearchInfo').style.display = 'block';
             document.getElementById('urlSearchInfo').style.display = 'none';
             document.getElementById('apiNotice').style.display = 'block';
+
+            // Restore search term when switching back to web search
+            if (this.currentSearchTerm) {
+                document.getElementById('imageSearchInput').value = this.currentSearchTerm;
+            }
         } else {
             document.getElementById('webSearchBar').style.display = 'none';
             document.getElementById('urlSearchBar').style.display = 'flex';
@@ -186,12 +191,13 @@ class ImageSearchManager {
         modal.style.display = 'flex';
 
         // Clear previous results
-        document.getElementById('searchResults').innerHTML = '<p class="search-placeholder">Enter a search term and click Search to find images</p>';
+        document.getElementById('searchResults').innerHTML = '<p class="search-placeholder">Enter a search term or URL to find images</p>';
         document.getElementById('selectedImagesContainer').innerHTML = '';
         document.getElementById('selectedCount').textContent = '0';
 
         // Set suggested search term based on location
         const searchTerm = this.getSuggestedSearchTerm(location);
+        this.currentSearchTerm = searchTerm; // Store for later use
         document.getElementById('imageSearchInput').value = searchTerm;
         document.getElementById('imageSearchInput').focus();
     }
@@ -473,6 +479,17 @@ class ImageSearchManager {
 
         if (!images || images.length === 0) return;
 
+        console.log(`Updating carousel for ${location} with ${images.length} images`);
+
+        // Clean up old instance first
+        if (container._carouselInstance) {
+            const oldInstance = container._carouselInstance;
+            if (oldInstance.autoplayInterval) {
+                clearInterval(oldInstance.autoplayInterval);
+            }
+            container._carouselInstance = null;
+        }
+
         // Clear existing slides and dots
         carousel.innerHTML = '';
         if (dotsContainer) {
@@ -487,18 +504,18 @@ class ImageSearchManager {
             carousel.appendChild(slide);
         });
 
+        console.log(`Added ${carousel.querySelectorAll('.carousel-slide').length} slides to carousel`);
+
+        // Force DOM reflow before reinitializing
+        void carousel.offsetHeight;
+
         // Reinitialize carousel for this container
         if (window.Carousel) {
-            // Store reference to container for cleanup
-            if (container._carouselInstance) {
-                // Clean up old instance if it exists
-                const oldInstance = container._carouselInstance;
-                if (oldInstance.autoplayInterval) {
-                    clearInterval(oldInstance.autoplayInterval);
-                }
-            }
-            // Create new instance and store reference
-            container._carouselInstance = new window.Carousel(container);
+            // Use setTimeout to ensure DOM is fully updated
+            setTimeout(() => {
+                container._carouselInstance = new window.Carousel(container);
+                console.log(`Carousel reinitialized with ${container._carouselInstance.slides.length} slides`);
+            }, 10);
         }
     }
 
