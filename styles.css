@@ -1,0 +1,743 @@
+/* Luxury Hotel & Architectural Design */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1a1a1a;
+    --secondary: #d4af37;
+    --accent: #c9a961;
+    --text-dark: #2c2c2c;
+    --text-light: #6b6b6b;
+    --text-lighter: #999999;
+    --bg-light: #fafafa;
+    --white: #ffffff;
+    --border: #e5e5e5;
+    --shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.8;
+    background-color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+
+/* Hero Section - Elegant & Refined */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    animation: subtleZoom 30s ease-in-out infinite alternate;
+}
+
+@keyframes subtleZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    animation: fadeInUp 1.2s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.95;
+}
+
+.hero-icon {
+    font-size: 3rem;
+    opacity: 0.9;
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Navigation - Minimal & Elegant */
+.nav-bar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-bar .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    padding: 0.7rem 2rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--secondary);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    color: var(--secondary);
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+/* Day Sections */
+.day-section {
+    margin: 8rem 0;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.day-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.day-header::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: var(--secondary);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.day-header h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+}
+
+.day-title {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--text-light);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* Timeline - Refined */
+.timeline {
+    margin: 4rem 0;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-marker {
+    width: 12px;
+    height: 12px;
+    background: var(--secondary);
+    border-radius: 50%;
+    margin-right: 3rem;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item:not(:last-child) .timeline-marker::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 12px;
+    width: 1px;
+    height: calc(100% + 3rem);
+    background: var(--border);
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--white);
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    box-shadow: var(--shadow);
+    border-color: var(--secondary);
+}
+
+.timeline-content h3 {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.timeline-content li {
+    padding: 0.7rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.timeline-content li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+/* Cards - Architectural & Clean */
+.accommodation-card, .activity-card {
+    background: var(--white);
+    padding: 4rem;
+    margin: 4rem 0;
+    border: 1px solid var(--border);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.accommodation-card:hover, .activity-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+
+.accommodation-card h3, .activity-card h3 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.highlight {
+    border: 2px solid var(--secondary);
+    background: linear-gradient(to bottom, var(--white) 0%, #fafaf8 100%);
+}
+
+.highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary);
+}
+
+/* Activity Options */
+.activity-option {
+    background: var(--bg-light);
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.activity-option:hover {
+    box-shadow: var(--shadow);
+}
+
+.activity-option.recommended {
+    background: var(--white);
+    border: 2px solid var(--secondary);
+    border-left: 4px solid var(--secondary);
+}
+
+.activity-option h4 {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.activity-option ul, .accommodation-card ul, .activity-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.activity-option li, .accommodation-card li, .activity-card li {
+    padding: 0.7rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.activity-option li::before, .accommodation-card li::before, .activity-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
+.important-note {
+    background: #fef9e7;
+    border-left: 3px solid var(--secondary);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+/* Carousel - Elegant & Professional */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 3rem auto;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background: var(--bg-light);
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 0;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(10%);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 200;
+}
+
+.carousel-btn:hover {
+    background: var(--secondary);
+    color: var(--white);
+    border-color: var(--secondary);
+}
+
+.carousel-btn.prev {
+    left: 20px;
+}
+
+.carousel-btn.next {
+    right: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-dot.active {
+    background: var(--secondary);
+    width: 30px;
+    border-color: var(--secondary);
+}
+
+.hotel-description {
+    margin-top: 2rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* Tips Section */
+.tips-section {
+    background: var(--bg-light);
+    padding: 6rem 4rem;
+    margin: 8rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.tips-section h2 {
+    text-align: center;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--primary);
+    margin-bottom: 5rem;
+    font-weight: 300;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.tip-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+}
+
+.tip-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.tip-card ul, .tip-card ol {
+    padding-left: 1.5rem;
+    color: var(--text-light);
+}
+
+.tip-card li {
+    margin: 0.8rem 0;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* Footer - Elegant */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 5rem 0;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.footer-message {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.footer-dates {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Countdown - Elegant Integration */
+.countdown {
+    font-size: 1rem !important;
+    margin-top: 3rem !important;
+    padding: 2rem 3rem !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    animation: fadeInUp 1.5s ease 0.8s both !important;
+}
+
+.countdown > div:first-child {
+    font-weight: 300 !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.8rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+}
+
+.countdown > div:last-child {
+    font-size: 2rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.1em !important;
+    font-family: 'Cormorant Garamond', serif !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        height: 80vh;
+        min-height: 600px;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .day-section {
+        margin: 5rem 0;
+    }
+
+    .nav-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
+    }
+
+    .timeline-marker {
+        margin-right: 1.5rem;
+    }
+
+    .carousel {
+        height: 350px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-btn.prev {
+        left: 10px;
+    }
+
+    .carousel-btn.next {
+        right: 10px;
+    }
+
+    .carousel-container {
+        max-width: 100%;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .accommodation-card, .activity-card, .tips-section {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 70vh;
+        min-height: 500px;
+    }
+
+    .carousel {
+        height: 250px;
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar - Minimal */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Print Styles */
+@media print {
+    .nav-bar, .carousel-btn, .carousel-dots {
+        display: none;
+    }
+
+    .hero {
+        height: auto;
+        min-height: auto;
+        page-break-after: always;
+    }
+
+    .day-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Loading States */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.loading {
+    background: linear-gradient(
+        90deg,
+        var(--bg-light) 0%,
+        #f0f0f0 50%,
+        var(--bg-light) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
