@@ -111,7 +111,7 @@ class ImageSearchManager {
                         <p class="search-placeholder">Enter a search term or URL to find images</p>
                     </div>
                     <div class="selected-images">
-                        <h3>Selected Images (<span id="selectedCount">0</span>/3)</h3>
+                        <h3>Selected Images (<span id="selectedCount">0</span>/6)</h3>
                         <div id="selectedImagesContainer" class="selected-images-grid"></div>
                     </div>
                 </div>
@@ -411,8 +411,8 @@ class ImageSearchManager {
     }
 
     selectImage(image) {
-        if (this.selectedImages.length >= 3) {
-            alert('You can select up to 3 images. Remove one to select another.');
+        if (this.selectedImages.length >= 6) {
+            alert('You can select up to 6 images. Remove one to select another.');
             return;
         }
 
@@ -468,12 +468,16 @@ class ImageSearchManager {
 
     updateCarousel(location, container) {
         const carousel = container.querySelector('.carousel');
+        const dotsContainer = container.querySelector('.carousel-dots');
         const images = this.customImages[location];
 
         if (!images || images.length === 0) return;
 
-        // Clear existing slides
+        // Clear existing slides and dots
         carousel.innerHTML = '';
+        if (dotsContainer) {
+            dotsContainer.innerHTML = '';
+        }
 
         // Add new slides
         images.forEach((url, index) => {
@@ -485,7 +489,16 @@ class ImageSearchManager {
 
         // Reinitialize carousel for this container
         if (window.Carousel) {
-            new window.Carousel(container);
+            // Store reference to container for cleanup
+            if (container._carouselInstance) {
+                // Clean up old instance if it exists
+                const oldInstance = container._carouselInstance;
+                if (oldInstance.autoplayInterval) {
+                    clearInterval(oldInstance.autoplayInterval);
+                }
+            }
+            // Create new instance and store reference
+            container._carouselInstance = new window.Carousel(container);
         }
     }
 
